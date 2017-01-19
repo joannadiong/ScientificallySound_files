@@ -21,7 +21,7 @@ def getEMG(emg, sampling_rate, highpass=20, lowpass=450):
     # remove mean
     emg = emg - np.mean(emg)
     # create filter parameters and digitally filter signal
-    high, low = highpass / (sampling_rate / 2), lowpass / (sampling_rate / 2)
+    high, low = highpass/sampling_rate, lowpass/sampling_rate
     b, a = sp.signal.butter(4, [high, low], btype='bandpass')
     emg = sp.signal.filtfilt(b, a, emg)
     # take absolute of emg
